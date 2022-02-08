@@ -525,6 +525,14 @@ Table of Contents
 
    Palette index 0 always means transparent color.
 
+   [Trivia] Palette #4 is not officially used in-game. It is a joke palette of
+   greens, purples, blues, and oranges. CEO Paul Neurath had developed another
+   game called Space Rogue on Apple IIe and complained about the IIe palette
+   being nothing but green, purple, blue, and orange. The developers put this
+   palette along with code to look for a specific trigger file they planted on
+   his PC, and every so many frames the game would render a frame in palette #4
+   instead of palette #0. It is unclear what the trigger file is or if the code
+   to detect it is still present in the final production version of the code.
 
 3.1.2  16 color auxiliary palette mappings
 
