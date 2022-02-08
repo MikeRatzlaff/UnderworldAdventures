@@ -1252,8 +1252,8 @@ Table of Contents
 
 3.8  Weapon animations
 
-   Attack animations:
-   ------------------
+   Weapons.gr: Animation frames:
+   -----------------------------
    The file weapons.gr contains animation frames for attacks with the various
    weapon types.
 
@@ -1269,10 +1269,20 @@ Table of Contents
    Therefore, each weapon type has 3*9+1 = 28 frames, 4 attack types gives 112
    images.
 
-   TODO: mace seems not to fit this exactly!!!
+   [observed in UW1] Every weapon has "no draw" frames for when the weapon is
+   off-screen. The sword, axe, and fist use the convention of the "small image"
+   mentioned above with an offset of (0,0) (see weapons.dat below on how to
+   find offsets) for no-draw frames. The mace does not use this convention, and
+   instead uses null records in the .gr file to signify no-draw frames. Null
+   records are described in section 3.2.
+   
+   [observed in UW1] To animate weapon wielding, draw the 3rd power-up
+   animation backwards (ie 22nd .. 19th frames) before resting on the 28th
+   frame. To lower the weapon, draw these in order. No-draw frames are skipped,
+   meaning they do not use an animation tic in game time.
 
-   Weapons.dat:
-   ------------
+   Weapons.dat: Animation frame offsets
+   ------------------------------------
    This file stores 8-bit coordinates for the frames of the various attack
    animations. For each attack type first 28 x-coordinates are stored, then
    28 y-coordinates. There are 8 such sets of coordinates:
@@ -1289,8 +1299,8 @@ Table of Contents
    Coordinates pin-point the upper-left corner of the attack frame and are
    relative to the lower left corner of the 3d-view area.
 
-   Weapons.cm:
-   -----------
+   Weapons.cm: Animation frame palettes
+   ------------------------------------
    This file stores two aux 16-color pallettes for the attack animation
    frames. These are needed to tint the weapon attack frames according to the
    skin color of the selected character. I haven't checked, but probably one
